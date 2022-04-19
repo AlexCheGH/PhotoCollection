@@ -17,6 +17,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var labelViewContainer: UIView!
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private let cornerRadius: CGFloat = 10
     
@@ -36,6 +37,12 @@ class CustomCollectionViewCell: UICollectionViewCell {
         configureBackgroundContainer()
         label.text = entry?.authorUsername
         imageView.image = entry?.image
+        
+        if entry?.image != nil {
+            activityIndicator.stopAnimating()
+            activityIndicator.isHidden = true
+        }
+        
     }
     
     

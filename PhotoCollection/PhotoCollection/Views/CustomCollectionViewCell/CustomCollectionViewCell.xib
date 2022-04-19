@@ -43,16 +43,23 @@
                                     <constraint firstAttribute="height" constant="20" id="wpT-Mn-3Ev"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="z0n-Tu-9cF">
+                                <rect key="frame" x="0.0" y="0.0" width="402" height="300"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="z0n-Tu-9cF" firstAttribute="top" secondItem="h6G-vm-sR3" secondAttribute="top" id="CR9-jS-uK5"/>
                             <constraint firstAttribute="bottom" secondItem="M9b-gS-AJB" secondAttribute="bottom" id="EgH-L2-7cP"/>
                             <constraint firstItem="M9b-gS-AJB" firstAttribute="leading" secondItem="h6G-vm-sR3" secondAttribute="leading" id="FlY-dF-1IV"/>
+                            <constraint firstAttribute="trailing" secondItem="z0n-Tu-9cF" secondAttribute="trailing" id="QC1-xQ-Ykd"/>
                             <constraint firstAttribute="trailing" secondItem="M9b-gS-AJB" secondAttribute="trailing" id="QNV-3L-RBC"/>
                             <constraint firstAttribute="bottom" secondItem="sJ0-Ev-1h6" secondAttribute="bottom" constant="20" symbolic="YES" id="RI9-WW-o5I"/>
                             <constraint firstItem="sJ0-Ev-1h6" firstAttribute="top" secondItem="h6G-vm-sR3" secondAttribute="top" id="eJ6-RS-M7j"/>
                             <constraint firstAttribute="trailing" secondItem="sJ0-Ev-1h6" secondAttribute="trailing" id="fGH-Mj-JP5"/>
+                            <constraint firstItem="z0n-Tu-9cF" firstAttribute="leading" secondItem="h6G-vm-sR3" secondAttribute="leading" id="mag-hx-LSc"/>
                             <constraint firstItem="sJ0-Ev-1h6" firstAttribute="leading" secondItem="h6G-vm-sR3" secondAttribute="leading" id="q0e-Zu-SpB"/>
+                            <constraint firstItem="M9b-gS-AJB" firstAttribute="top" secondItem="z0n-Tu-9cF" secondAttribute="bottom" id="qhQ-V3-Rdi"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -66,6 +73,7 @@
             </constraints>
             <size key="customSize" width="402" height="335"/>
             <connections>
+                <outlet property="activityIndicator" destination="z0n-Tu-9cF" id="v7v-ZM-nqE"/>
                 <outlet property="backgroundContainer" destination="h6G-vm-sR3" id="gTY-FB-OHr"/>
                 <outlet property="imageView" destination="sJ0-Ev-1h6" id="UrX-33-Vq9"/>
                 <outlet property="label" destination="G9u-6f-Hew" id="pa1-Z5-l1h"/>
