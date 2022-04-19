@@ -6,18 +6,54 @@
 //
 
 import UIKit
+import Combine
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var containterView: UIView!
+    let photosView = PhotosView.loadViewFromNib()
+    
+    var subscriber: AnyCancellable?
+    
+    private let manager = ImageManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        configureContainerView()
+        manager.getImageInfo()
         
-        let imageManager = ImageManager()
-        
-        imageManager.getImageInfo()
- 
+        setupSubscriber()
     }
+    
+    func setupSubscriber() {
+        subscriber = manager.modelPublisher
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: { model in
+                self.photosView.configureView(model: model)
+                if model.count >= 0 {
+                    self.photosView.updateCellAt(row: model.count - 1)
+                }
+            })
+    }
+    
+    func configureContainerView() {
+        photosView.frame.size = containterView.frame.size
+        photosView.delegate = self
+        containterView.addSubview(photosView)
+    }
+    
 }
 
+extension ViewController: PhotosViewDelegate {
+    func cellAppeared(id: String?) {
+        manager.getImage(id: id) {
+            DispatchQueue.main.async {
+                let index = self.manager.model.firstIndex{ $0.id == id }
+                guard let index = index else { return }
+                self.photosView.updateCellAt(row: index)
+            }
+        }
+     
+    }
+}
 

@@ -7,25 +7,44 @@
 
 import Foundation
 import UIKit
+import Combine
 
 class ImageManager {
     
-    var model: [ImageEntry] = []
+    @Published  var model: [ImageEntry] = []
+    
+    var modelPublisher: AnyPublisher<[ImageEntry], Never> {
+        return $model.map{ $0 }
+        .eraseToAnyPublisher()
+    }
     
     func getImageInfo() {
         let networkManager = NetworkManager<[UnsplashImageInfo]>()
-        networkManager.makeImagesInfoRequest(numberOfResults: 10) { results in
+        networkManager.makeImagesInfoRequest(numberOfResults: 25) { results in
             results?.forEach{ element in
-                let entry = ImageEntry(id: element.id, width: element.width, height: element.height, image: nil, authorUsername: element.user?.username)
+                let entry = ImageEntry(id: element.id,
+                                       width: element.width,
+                                       height: element.height,
+                                       image: nil,
+                                       authorUsername: element.user?.username,
+                                       link: element.urls?.regular)
                 self.model.append(entry)
             }
         }
     }
     
-    func getImage(from link: String?, id: String?) {
+    func getImage(id: String?, completion: @escaping() -> Void) {
         let networkManager = NetworkManager<Data>()
+        var link: String?
+        for item in model {
+            if item.id == id {
+                link = item.link
+            }
+        }
+        
         networkManager.makeImageRequest(from: link) { image in
             self.changeImageInModel(id: id, image: image)
+            completion()
         }
     }
     
@@ -36,5 +55,4 @@ class ImageManager {
             }
         }
     }
-    
 }

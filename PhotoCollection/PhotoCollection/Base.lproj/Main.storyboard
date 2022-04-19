@@ -15,9 +15,24 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Utk-ap-ezI">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Utk-ap-ezI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="4o4-do-uaB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Utk-ap-ezI" secondAttribute="trailing" id="5rB-HC-fIM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Utk-ap-ezI" secondAttribute="bottom" id="d66-Yb-bHE"/>
+                            <constraint firstItem="Utk-ap-ezI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vFt-Oh-YtV"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="containterView" destination="Utk-ap-ezI" id="WkI-GL-1f5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
