@@ -9,6 +9,7 @@ import UIKit
 
 protocol PhotosViewDelegate {
     func cellAppeared(id: String?)
+    func requestModelEntries()
 }
 
 class PhotosView: UIView {
@@ -59,8 +60,14 @@ extension PhotosView: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.identifier, for: indexPath) as! CustomCollectionViewCell
         cell.configureCell(entry: model[indexPath.row])
         
+        //Cell has been drawn, but lacks image. Requests manager to provide it with the image
         if model[indexPath.row].image == nil {
             delegate?.cellAppeared(id: model[indexPath.row].id)
+        }
+        
+        //Sends request for manager to provide collection view with more entries
+        if indexPath.row + 5 >= model.count {
+            delegate?.requestModelEntries()
         }
         
         return cell

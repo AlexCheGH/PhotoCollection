@@ -18,9 +18,9 @@ class ImageManager {
         .eraseToAnyPublisher()
     }
     
-    func getImageInfo() {
+    func getImageInfo(number: Int) {
         let networkManager = NetworkManager<[UnsplashImageInfo]>()
-        networkManager.makeImagesInfoRequest(numberOfResults: 25) { results in
+        networkManager.makeImagesInfoRequest(numberOfResults: number) { results in
             results?.forEach{ element in
                 let entry = ImageEntry(id: element.id,
                                        width: element.width,

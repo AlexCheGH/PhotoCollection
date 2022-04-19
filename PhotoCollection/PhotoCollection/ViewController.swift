@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureContainerView()
-        manager.getImageInfo()
+        manager.getImageInfo(number: 25)
         
         setupSubscriber()
     }
@@ -45,6 +45,7 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: PhotosViewDelegate {
+    
     func cellAppeared(id: String?) {
         manager.getImage(id: id) {
             DispatchQueue.main.async {
@@ -53,7 +54,11 @@ extension ViewController: PhotosViewDelegate {
                 self.photosView.updateCellAt(row: index)
             }
         }
-     
     }
+    
+    func requestModelEntries() {
+        manager.getImageInfo(number: 10)
+    }
+    
 }
 

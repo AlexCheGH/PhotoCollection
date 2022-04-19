@@ -61,6 +61,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A5C06F55280EDE9500C4CBD7 /* Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				A5E9215E280DB20C009389BD /* PinterestLayout.swift */,
+			);
+			path = Layouts;
+			sourceTree = "<group>";
+		};
 		A5E92122280C0918009389BD = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +92,7 @@
 				A5E92130280C0918009389BD /* SceneDelegate.swift */,
 				A5E92142280C092C009389BD /* ApiKey.plist */,
 				A5E92132280C0918009389BD /* ViewController.swift */,
+				A5C06F55280EDE9500C4CBD7 /* Layouts */,
 				A5E92153280CBBF1009389BD /* Views */,
 				A5E9214C280C1207009389BD /* Model */,
 				A5E92144280C0F64009389BD /* Managers */,
@@ -146,7 +155,6 @@
 			children = (
 				A5E9215A280CBC9A009389BD /* CustomCollectionViewCell.swift */,
 				A5E9215B280CBC9A009389BD /* CustomCollectionViewCell.xib */,
-				A5E9215E280DB20C009389BD /* PinterestLayout.swift */,
 			);
 			path = CustomCollectionViewCell;
 			sourceTree = "<group>";
