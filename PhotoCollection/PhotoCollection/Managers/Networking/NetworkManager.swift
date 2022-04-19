@@ -10,7 +10,6 @@ import UIKit
 
 class NetworkManager<T: Codable> {
     
-    
     func makeImagesInfoRequest(numberOfResults: Int, completion: @escaping(T?) -> Void ) {
         let endpoint = ImageInfosEndpoint(numberOfResults: numberOfResults)
         makeRequest(endpoint: endpoint) { data in
@@ -19,6 +18,7 @@ class NetworkManager<T: Codable> {
         }
     }
     
+    //Exception from the generic function above. Can't decode() data<->image on the go
     func makeImageRequest(from link: String?, completion: @escaping(UIImage?) -> Void) {
         let endpoint = ImageURLEndpoint(imageLink: link)
         makeRequest(endpoint: endpoint) { data in
@@ -42,7 +42,6 @@ class NetworkManager<T: Codable> {
             }
         }
     }
-        //пытается сделать декод даты из даты. нужен фикс
     
     private func decode(_ data: Data) -> T? {
         let decoder = JSONDecoder()

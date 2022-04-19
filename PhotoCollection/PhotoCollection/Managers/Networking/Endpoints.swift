@@ -33,7 +33,7 @@ extension ImageInfosEndpoint {
         let scheme = "https://"
         let host = "api.unsplash.com"
         let path = "/photos/random/"
-        let query = "?client_id=\(apiKey)&count=\(numberOfResults)"
+        let query = "?client_id=\(apiKey)&count=\(numberOfResults)" //basic. Need to add "component.query ..." builder for a more serious approach
         let stringURL = scheme + host + path + query
         
         return URL(string: stringURL)
@@ -41,12 +41,9 @@ extension ImageInfosEndpoint {
 }
 
 struct ImageURLEndpoint: Endpointable {
-    
     let imageLink: String?
     
     var url: URL? {
         return URL(string: imageLink!)
     }
-    
-    
 }

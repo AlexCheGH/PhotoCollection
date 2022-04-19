@@ -13,9 +13,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var containterView: UIView!
     let photosView = PhotosView.loadViewFromNib()
     
-    var subscriber: AnyCancellable?
-    
     private let manager = ImageManager()
+    private var subscriber: AnyCancellable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +58,5 @@ extension ViewController: PhotosViewDelegate {
     func requestModelEntries() {
         manager.getImageInfo(number: 10)
     }
-    
 }
 

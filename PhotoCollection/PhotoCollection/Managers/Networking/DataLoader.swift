@@ -19,7 +19,6 @@ class DataLoader {
             let result = data.map(Result.success) ?? .failure(NetworkError.wrongMap)
             handler(result)
         }
-        
         task.resume()
     }
 }
